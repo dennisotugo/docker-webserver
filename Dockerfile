@@ -21,23 +21,6 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/a
     echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/community" >> /etc/apk/repositories && \
     echo "https://dl.bintray.com/php-alpine/v${ALPINE_VERSION}/php-${PHP_VERSION}" >> /etc/apk/repositories
 
-RUN apk update \
-    && apk upgrade \
-    && apk add --no-cache \
-        freetype-dev \
-        libpng-dev \
-        jpeg-dev \
-        libjpeg-turbo-dev
-
-RUN docker-php-ext-configure gd \
-        --with-freetype-dir=/usr/lib/ \
-        --with-png-dir=/usr/lib/ \
-        --with-jpeg-dir=/usr/lib/ \
-        --with-gd
-
-RUN NUMPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
-    && docker-php-ext-install -j${NUMPROC} gd
-
 # INSTALL PHP AND SOME EXTENSIONS. SEE: https://github.com/codecasts/php-alpine
 RUN apk add --no-cache --update php-fpm \
     php7 \
@@ -53,7 +36,20 @@ RUN apk add --no-cache --update php-fpm \
     php7-json \
     php7-redis \
     php7-gd \
-    php7-xml && \
+    php7-mysqli \
+    php7-curl \
+    php7-xml 
+    curl \
+    wget \
+    libjpeg \
+    libpng  \
+    freetype \
+    libxml2 \
+    libxslt \
+    libmcrypt  \
+    libmemcached \
+    gettext \
+    libzip && \
     ln -s /usr/bin/php7 /usr/bin/php
 
 # CONFIGURE WEB SERVER.
