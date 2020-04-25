@@ -39,8 +39,13 @@ RUN apk add --no-cache --update php-fpm \
     php7-xml && \
     ln -s /usr/bin/php7 /usr/bin/php
 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd
+# mcrypt, gd, iconv
+RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
+    && docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)" iconv mcrypt \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)" gd
+
+RUN apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
 # CONFIGURE WEB SERVER.
 RUN mkdir -p /var/www && \
