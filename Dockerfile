@@ -38,7 +38,7 @@ RUN apk add --no-cache --update php-fpm \
     php7-gd \
     php7-mysqli \
     php7-curl \
-    php7-xml 
+    php7-xml \
     curl \
     wget \
     libjpeg \
