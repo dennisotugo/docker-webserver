@@ -15,7 +15,7 @@ RUN apk --update --no-cache add ca-certificates \
 ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
 # CONFIGURE ALPINE REPOSITORIES AND PHP BUILD DIR.
-ARG PHP_VERSION=7.3
+ARG PHP_VERSION=7.4
 ARG ALPINE_VERSION=3.9
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/community" >> /etc/apk/repositories && \
@@ -23,18 +23,19 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/a
 
 # INSTALL PHP AND SOME EXTENSIONS. SEE: https://github.com/codecasts/php-alpine
 RUN apk add --no-cache --update php-fpm \
-    php \
-    php-openssl \
-    php-pdo \
-    php-pdo_mysql \
-    php-mbstring \
-    php-phar \
-    php-session \
-    php-dom \
-    php-ctype \
-    php-zlib \
-    php-json \
-    php-xml && \
+    php7 \
+    php7-openssl \
+    php7-pdo \
+    php7-pdo_mysql \
+    php7-mbstring \
+    php7-phar \
+    php7-session \
+    php7-dom \
+    php7-ctype \
+    php7-zlib \
+    php7-json \
+    php7-redis \
+    php7-xml && \
     ln -s /usr/bin/php7 /usr/bin/php
 
 # CONFIGURE WEB SERVER.
@@ -49,7 +50,7 @@ RUN mkdir -p /var/www && \
     rm /etc/php7/php.ini
 
 # INSTALL COMPOSER.
-ARG COMPOSER_HASH=a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1
+ARG COMPOSER_HASH=e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php -r "if (hash_file('SHA384', 'composer-setup.php') === '${COMPOSER_HASH}') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
     php composer-setup.php --install-dir=/usr/bin --filename=composer && \
