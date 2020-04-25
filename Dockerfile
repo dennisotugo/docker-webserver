@@ -35,6 +35,7 @@ RUN apk add --no-cache --update php-fpm \
     php7-zlib \
     php7-json \
     php7-redis \
+    php7-gd \
     php7-xml && \
     ln -s /usr/bin/php7 /usr/bin/php
 
