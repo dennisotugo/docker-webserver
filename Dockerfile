@@ -39,6 +39,9 @@ RUN apk add --no-cache --update php-fpm \
     php7-xml && \
     ln -s /usr/bin/php7 /usr/bin/php
 
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
+
 # CONFIGURE WEB SERVER.
 RUN mkdir -p /var/www && \
     mkdir -p /run/php && \
