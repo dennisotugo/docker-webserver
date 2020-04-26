@@ -24,22 +24,33 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/a
 # INSTALL PHP AND SOME EXTENSIONS. SEE: https://github.com/codecasts/php-alpine
 RUN apk add --no-cache --update php-fpm \
     php7 \
+    php7-ctype \
+    php7-curl \
+    php7-dom \
+    php7-fileinfo \
+    php7-ftp \
+    php7-gd \
+    php7-iconv \
+    php7-json \
+    php7-mbstring \
+    php7-mysqli \
+    php7-mysqlnd \
     php7-openssl \
     php7-pdo \
     php7-pdo_mysql \
-    php7-mbstring \
+    php7-pdo_sqlite \
+    php7-pear \
     php7-phar \
-    php7-session \
-    php7-dom \
-    php7-ctype \
-    php7-zlib \
-    php7-json \
+    php7-posix \
     php7-redis \
-    php7-gd \
-    php7-mysqli \
-    php7-curl \
+    php7-session \
+    php7-simplexml \
+    php7-sqlite3 \
+    php7-tokenizer \
     php7-xml \
-    php7-iconv \
+    php7-xmlreader \
+    php7-xmlwriter \
+    php7-zlib
     curl \
     wget \
     libjpeg \
