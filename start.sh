@@ -20,8 +20,7 @@ if [[ "${LARAVEL_APP}" == "1" ]]; then
     # RUN LARAVEL MIGRATIONS ON BUILD.
     if [[ "${RUN_LARAVEL_MIGRATIONS_ON_BUILD}" == "1" ]]; then
         cd ${WEBROOT}
-        php artisan migrate
-        php artisan db:seed
+        php artisan migrate:refresh --seed --force -n
     fi
 
     # LARAVEL SCHEDULER
