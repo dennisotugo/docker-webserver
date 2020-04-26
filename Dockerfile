@@ -50,7 +50,7 @@ RUN apk add --no-cache --update php-fpm \
     php7-xml \
     php7-xmlreader \
     php7-xmlwriter \
-    php7-zlib
+    php7-zlib \
     curl \
     wget \
     libjpeg \
