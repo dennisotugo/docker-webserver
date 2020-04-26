@@ -27,7 +27,6 @@ RUN apk add --no-cache --update php-fpm \
     php7-ctype \
     php7-curl \
     php7-dom \
-    php7-fileinfo \
     php7-ftp \
     php7-gd \
     php7-iconv \
@@ -44,12 +43,9 @@ RUN apk add --no-cache --update php-fpm \
     php7-posix \
     php7-redis \
     php7-session \
-    php7-simplexml \
     php7-sqlite3 \
-    php7-tokenizer \
     php7-xml \
     php7-xmlreader \
-    php7-xmlwriter \
     php7-zip \
     php7-zlib \
     curl \
