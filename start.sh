@@ -65,4 +65,6 @@ php artisan config:cache
 # START SUPERVISOR.
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf
 sleep 5
+chmod -Rf 777 /var/www/storage
 rm /var/www/storage/logs/laravel.log
+chmod -Rf 777 /var/www/storage
