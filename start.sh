@@ -34,14 +34,15 @@ fi
 ln -s /etc/php7/php.ini /etc/php7/conf.d/php.ini
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
+sed -i -e "s/clear_env = no/clear_env = yes/g" /etc/php7/php-fpm.d/www.conf
+sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf
+sed -i "/error_log = .*/c\error_log = /proc/self/fd/2" /etc/php7/php-fpm.conf
+
 # PRODUCTION LEVEL CONFIGURATION.
 if [[ "${PRODUCTION}" == "1" ]]; then
-    sed -i -e "s/;log_level = notice/log_level = warning/g" /etc/php7/php-fpm.conf
-    sed -i -e "s/clear_env = no/clear_env = yes/g" /etc/php7/php-fpm.d/www.conf
     sed -i -e "s/display_errors = On/display_errors = Off/g" /etc/php7/php.ini
 else
     sed -i -e "s/;log_level = notice/log_level = notice/g" /etc/php7/php-fpm.conf
-    sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf
 fi
 
 # PHP & SERVER CONFIGURATIONS.

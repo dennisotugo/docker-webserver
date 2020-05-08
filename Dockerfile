@@ -87,6 +87,7 @@ ADD config/nginx/site.conf /etc/nginx/sites-available/default.conf
 ADD config/php/php.ini /etc/php7/php.ini
 ADD config/php-fpm/www.conf /etc/php7/php-fpm.d/www.conf
 RUN chmod 755 /start.sh
+RUN ln -sf /proc/self/fd/1 /var/log/php7/error.log
 
 # EXPOSE PORTS!
 ARG NGINX_HTTP_PORT=80
