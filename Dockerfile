@@ -62,7 +62,7 @@ RUN apk add --no-cache --update tzdata php-fpm \
     ln -s /usr/bin/php7 /usr/bin/php
 
 # SETS TIME
-RUN cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime \
+RUN cp /usr/share/zoneinfo/Africa/Lagos /etc/localtime \
 && echo "Africa/Lagos" >  /etc/timezone \
 && date
 
