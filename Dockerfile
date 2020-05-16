@@ -22,7 +22,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/a
     echo "https://dl.bintray.com/php-alpine/v${ALPINE_VERSION}/php-${PHP_VERSION}" >> /etc/apk/repositories
 
 # INSTALL PHP AND SOME EXTENSIONS. SEE: https://github.com/codecasts/php-alpine
-RUN apk add --no-cache --update php-fpm \
+RUN apk add --no-cache --update tzdata php-fpm \
     php7 \
     php7-ctype \
     php7-curl \
@@ -60,6 +60,11 @@ RUN apk add --no-cache --update php-fpm \
     gettext \
     libzip && \
     ln -s /usr/bin/php7 /usr/bin/php
+
+# SETS TIME
+RUN cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime \
+&& echo "Africa/Lagos" >  /etc/timezone \
+&& date
 
 # CONFIGURE WEB SERVER.
 RUN mkdir -p /var/www && \
