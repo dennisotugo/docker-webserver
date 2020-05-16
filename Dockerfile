@@ -74,8 +74,7 @@ RUN mkdir -p /var/www && \
     mkdir -p /etc/nginx/sites-enabled && \
     mkdir -p /etc/nginx/sites-available && \
     rm /etc/nginx/nginx.conf && \
-    rm /etc/php7/php-fpm.d/www.conf && \
-    rm /etc/php7/php.ini
+    rm /etc/php7/php-fpm.d/www.conf
 
 # INSTALL COMPOSER.
 ARG COMPOSER_HASH=e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a
@@ -89,7 +88,7 @@ ADD start.sh /start.sh
 ADD config/supervisor/supervisord.conf /etc/supervisord.conf
 ADD config/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD config/nginx/site.conf /etc/nginx/sites-available/default.conf
-ADD config/php/php.ini /etc/php7/php.ini
+COPY config/php/php.ini /etc/php7/conf.d/custom.ini
 ADD config/php-fpm/www.conf /etc/php7/php-fpm.d/www.conf
 RUN chmod 755 /start.sh
 
