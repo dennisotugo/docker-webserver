@@ -74,7 +74,7 @@ RUN mkdir -p /var/www && \
     mkdir -p /etc/nginx/sites-enabled && \
     mkdir -p /etc/nginx/sites-available && \
     rm /etc/nginx/nginx.conf && \
-    rm /etc/php7/php-fpm.d/www.conf \
+    rm /etc/php7/php-fpm.d/www.conf && \
     rm /etc/php7/php-fpm.conf
 
 # INSTALL COMPOSER.
@@ -104,5 +104,3 @@ WORKDIR /var/www
 
 # KICKSTART!
 CMD ["/start.sh"]
-
-curl -f localhost:8080/health
