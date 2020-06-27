@@ -61,6 +61,7 @@ fi
 find /etc/php7/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
 php artisan config:cache
+php artisan queue:restart
 
 # START SUPERVISOR.
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf
