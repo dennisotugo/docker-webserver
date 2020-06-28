@@ -43,6 +43,7 @@ RUN apk add --no-cache --update tzdata php-fpm \
     php7-posix \
     php7-redis \
     php7-session \
+    php7-sockets \
     php7-sqlite3 \
     php7-xml \
     php7-xmlreader \
