@@ -87,10 +87,10 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 # ADD START SCRIPT, SUPERVISOR CONFIG, NGINX CONFIG AND RUN SCRIPTS.
 ADD start.sh /start.sh
-RUN mkdir -p /config
-COPY config/supervisor/redis.conf /config/redis.conf
-COPY config/supervisor/rabbitmq.conf /config/rabbitmq.conf
-RUN ls -la /config
+RUN mkdir -p /var/config
+COPY config/supervisor/redis.conf /var/config/redis.conf
+COPY config/supervisor/rabbitmq.conf /var/config/rabbitmq.conf
+RUN ls -la /var/config
 ADD config/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD config/nginx/site.conf /etc/nginx/sites-available/default.conf
 COPY config/php/php.ini /etc/php7/conf.d/custom.ini
