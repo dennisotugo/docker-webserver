@@ -64,6 +64,11 @@ php artisan config:cache
 php artisan queue:restart
 
 # START SUPERVISOR.
+if [[ ! -z "${RABBITMQ_HOST}" ]]; then
+    cp -Rf /config/rabbitmq.conf /etc/supervisord.conf
+else
+    cp -Rf /config/redis.conf /etc/supervisord.conf
+fi
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf
 sleep 5
 chmod -Rf 777 /var/www/storage
