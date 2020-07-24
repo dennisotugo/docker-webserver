@@ -92,6 +92,7 @@ COPY config/supervisor/sredis.conf /var/config/redis.conf
 COPY config/supervisor/srabbitmq.conf /var/config/rabbitmq.conf
 COPY config/supervisor/spos.conf /var/config/pos.conf
 COPY config/supervisor/sbiller.conf /var/config/biller.conf
+COPY config/supervisor/swallets.conf /var/config/wallet.conf
 RUN ls -la /var/config
 ADD config/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD config/nginx/site.conf /etc/nginx/sites-available/default.conf

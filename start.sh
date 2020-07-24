@@ -74,6 +74,9 @@ then
 elif [[ ! -z "${BILLER}" ]]
 then
   cp -Rf /var/config/biller.conf /etc/supervisord.conf
+elif [[ ! -z "${WALLET}" ]]
+then
+  cp -Rf /var/config/wallet.conf /etc/supervisord.conf
 else
   cp -Rf /var/config/redis.conf /etc/supervisord.conf
 fi
