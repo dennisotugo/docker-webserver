@@ -65,10 +65,14 @@ php artisan queue:restart
 
 # START SUPERVISOR.
 ls -la /var/config
-if [[ ! -z "${RABBITMQ_HOST}" ]]; then
-    cp -Rf /var/config/rabbitmq.conf /etc/supervisord.conf
+if [[ ! -z "${RABBITMQ_HOST}" ]]
+then
+  cp -Rf /var/config/rabbitmq.conf /etc/supervisord.conf
+elif [[ ! -z "${MPOS}" ]]
+then
+  cp -Rf /var/config/pos.conf /etc/supervisord.conf
 else
-    cp -Rf /var/config/redis.conf /etc/supervisord.conf
+  cp -Rf /var/config/redis.conf /etc/supervisord.conf
 fi
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf
 sleep 5
