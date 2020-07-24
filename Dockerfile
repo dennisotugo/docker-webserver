@@ -90,7 +90,7 @@ ADD start.sh /start.sh
 RUN mkdir -p /var/config
 COPY config/supervisor/redis.conf /var/config/redis.conf
 COPY config/supervisor/rabbitmq.conf /var/config/rabbitmq.conf
-COPY config/supervisor/pos.conf /var/config/pos.conf
+COPY config/supervisor/mpos.conf /var/config/mpos.conf
 RUN ls -la /var/config
 ADD config/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD config/nginx/site.conf /etc/nginx/sites-available/default.conf
