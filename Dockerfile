@@ -24,6 +24,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/a
 # INSTALL PHP AND SOME EXTENSIONS. SEE: https://github.com/codecasts/php-alpine
 RUN apk add --no-cache --update tzdata php-fpm \
     php7 \
+    php7-bcmath \
     php7-ctype \
     php7-curl \
     php7-dom \
