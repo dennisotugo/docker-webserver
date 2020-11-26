@@ -65,10 +65,7 @@ php artisan queue:restart
 
 # START SUPERVISOR.
 ls -la /var/config
-if [[ ! -z "${RABBITMQ_HOST}" ]]
-then
-  cp -Rf /var/config/rabbitmq.conf /etc/supervisord.conf
-elif [[ ! -z "${MPOS}" ]]
+if [[ ! -z "${MPOS}" ]]
 then
   cp -Rf /var/config/pos.conf /etc/supervisord.conf
 elif [[ ! -z "${BILLER}" ]]
@@ -77,6 +74,9 @@ then
 elif [[ ! -z "${WALLET}" ]]
 then
   cp -Rf /var/config/wallet.conf /etc/supervisord.conf
+elif [[ ! -z "${RABBITMQ_HOST}" ]]
+then
+  cp -Rf /var/config/rabbitmq.conf /etc/supervisord.conf
 else
   cp -Rf /var/config/redis.conf /etc/supervisord.conf
 fi
