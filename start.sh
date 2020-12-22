@@ -8,6 +8,9 @@ else
     export WEBROOT_PUBLIC=/var/www/public
 fi
 
+mkdir -p /var/log/php-fpm/
+chmod 777 -R /var/log/php-fpm/
+
 # UPDATE COMPOSER PACKAGES ON BUILD.
 ## 💡 THIS MAY MAKE THE BUILD SLOWER BECAUSE IT HAS TO FETCH PACKAGES.
 if [[ ! -z "${COMPOSER_DIRECTORY}" ]] && [[ "${COMPOSER_INSTALL_ON_BUILD}" == "1" ]]; then
