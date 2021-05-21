@@ -1,7 +1,7 @@
 # Alpine Image for Nginx and PHP
 
 # NGINX x ALPINE.
-FROM nginx:1.19-alpine
+FROM nginx:1.20-alpine
 
 # MAINTAINER OF THE PACKAGE.
 LABEL maintainer="Neo Ighodaro <neo@creativitykills.co>"
@@ -16,7 +16,7 @@ ADD https://packages.whatwedo.ch/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa
 
 # CONFIGURE ALPINE REPOSITORIES AND PHP BUILD DIR.
 ARG PHP_VERSION=7.4
-ARG ALPINE_VERSION=3.9
+ARG ALPINE_VERSION=3.13
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" > /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/community" >> /etc/apk/repositories && \
     echo "https://packages.whatwedo.ch/php-alpine/{ALPINE_VERSION}/php-{PHP_VERSION}" >> /etc/apk/repositories
