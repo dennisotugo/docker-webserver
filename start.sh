@@ -29,7 +29,6 @@ if [[ "${LARAVEL_APP}" == "1" ]]; then
     # LARAVEL SCHEDULER
     if [[ "${RUN_LARAVEL_SCHEDULER}" == "1" ]]; then
         echo '* * * * * cd /var/www && php artisan schedule:run >> /dev/null 2>&1' > /etc/crontabs/root
-        crond
     fi
 fi
 
