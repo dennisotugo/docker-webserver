@@ -109,6 +109,8 @@ EXPOSE ${NGINX_HTTPS_PORT} ${NGINX_HTTP_PORT}
 
 # SET THE WORK DIRECTORY.
 WORKDIR /var/www
+COPY apm-agent-php_1.2_all.apk .
+RUN apk add --allow-untrusted apm-agent-php_1.2_all.apk
 
 # KICKSTART!
 CMD ["/start.sh"]
